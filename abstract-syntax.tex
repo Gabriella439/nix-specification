@@ -1,0 +1,52 @@
+\require{mathtools}
+\begin{aligned}
+e \Coloneqq \quad & x \mathtt{:} \; e & \text{lambda with universal argument} \\
+| \quad & \mathtt{\{} \; \overline{x \mathtt{,}} \; \overline{x \; \mathtt{?} \; e \mathtt{,}} \; \mathtt{\ldots}^? \; \mathtt{\}} \mathtt{:} \; e & \text{lambda with formal arguments} \\
+| \quad & \mathtt{assert} \; e \mathtt{;} \; e & \text{assertion} \\
+| \quad & \mathtt{with} \; e \mathtt{;} \; e & \text{with expression} \\
+| \quad & \mathtt{let} \; \overline{b} \; \mathtt{in} \; e & \text{let expression} \\
+| \quad & \mathtt{!} e & \text{boolean negation operator} \\
+| \quad & \mathtt{-} e & \text{unary negation operator} \\
+| \quad & e \; \mathtt{|>} \; e & \text{pipe operator} \\
+| \quad & e \; \mathtt{==} \; e & \text{equality operator} \\
+| \quad & e \; \mathtt{<} \; e & \text{less than operator} \\
+| \quad & e \; \mathtt{\&\&} \; e & \text{and operator} \\
+| \quad & e \; \mathtt{||} \; e & \text{or operator} \\
+| \quad & e \; \mathtt{+} \; e & \text{addition operator} \\
+| \quad & e \; \mathtt{-} \; e & \text{subtraction operator} \\
+| \quad & e \; \mathtt{*} \; e & \text{multiplication operator} \\
+| \quad & e \; \mathtt{/} \; e & \text{division operator} \\
+| \quad & e \; e & \text{function application} \\
+| \quad & e \mathtt{.} a \overline{\mathtt{.} a} & \text{ selection operator} \\
+| \quad & e \mathtt{.} a \overline{\mathtt{.} a} \; \mathtt{or} \; e & \text{or expression} \\
+| \quad & x & \text{variable} \\
+| \quad & \mathtt{builtins} & \text{built-in functions and values} \\
+| \quad & \mathtt{null} \\
+| \quad & \mathtt{true} \\
+| \quad & \mathtt{false} \\
+| \quad & \mathtt{map} \\
+| \quad & \mathtt{toString} \\
+| \quad & \mathtt{abort} \\
+| \quad & \mathtt{import} \\
+| \quad & \mathtt{scopedImport} \\
+| \quad & \mathtt{derivation} \\
+| \quad & \mathtt{abort} \\
+| \quad & \mathtt{removeAttrs} \\
+| \quad & \mathtt{"} s^\star \mathtt{"} & \text{string} \\
+| \quad & n & \text{number} \\
+| \quad & \mathtt{\sim} \overline{/ s^\star} & \text{home-anchored path} \\
+| \quad & \mathtt{.} \overline{/ s^\star} & \text{relative path} \\
+| \quad & / s^\star \overline{/ s^\star} & \text{absolute path} \\
+| \quad & \mathtt{<} s \overline{/ s} \mathtt{>} & \text{search path} \\
+| \quad & \mathtt{\{} \; \overline{b} \; \mathtt{\}} & \text{attribute set} \\
+| \quad & \mathtt{rec} \; \mathtt{\{} \; \overline{b} \; \mathtt{\}} & \text{recursive attribute set} \\
+| \quad & \mathtt{[} \; \overline{e} \; \mathtt{]} & \text{list} \\
+\\
+b \Coloneqq \quad & a \overline{\mathtt{.} a} \; = \; e \mathtt{;} & \text{binding} \\
+| \quad & \mathtt{inherit} \; {\mathtt{(} e \mathtt{)}}^? \; \overline{a} \mathtt{;} & \text{inherit binding} \\
+\\
+a \Coloneqq \quad & x & \text{attribute} \\
+| \quad & \mathtt{"} s^\star \mathtt{"} & \text{string attribute} \\
+\\
+s^\star \Coloneqq \quad & s \overline{\mathtt{$\{} e \mathtt{\}} s} & \text{interpolated string}
+\end{aligned}
