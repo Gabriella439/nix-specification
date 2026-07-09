@@ -96,8 +96,6 @@ attribute = identifier | string | interpolation | "or"
 
 interpolation = "${" expression "}"
 
-escape_sequence = /\\([^$]|\s)/
-
 variable = identifier
 
 integer = ? /[0-9]+/ ?
