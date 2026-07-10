@@ -23,7 +23,7 @@ expression =
     argument ":" expression
   | "assert" expression ";" expression
   | "with" expression ";" expression
-  | "let" binding* "in" expression
+  | "let" let-binding* "in" expression
   | "if" expression "then" expression "else" expression
   | pipe_expression
 
@@ -38,9 +38,11 @@ formals =
 
 formal = identifier ("?" expression)?
 
-binding =
-    attribute_path "=" expression ";"
-  | "inherit" ("(" expression ")")? attribute ";"
+let-binding =
+    identifier ("." attribute)* "=" expression ";"
+  | inherit-binding
+
+inherit-binding = "inherit" ("(" expression ")")? attribute ";"
 
 pipe_expression =
     operator_expression ("|>" operator_expression)*
@@ -77,6 +79,10 @@ application_expression = select_expression+
 select_expression =
     simple_expression ("." attribute_path ("or" select_expression)? | "or")?
 
+attribute-binding =
+    attribute_path "=" expression ";"
+  | inherit-binding
+
 simple_expression =
     variable
   | integer
@@ -86,7 +92,7 @@ simple_expression =
   | path
   | search_path
   | uri
-  | ("let" | "rec")? "{" binding* "}"
+  | ("let" | "rec")? "{" attribute-binding* "}"
   | "[" select_expression "]"
   | "(" expression ")"
 
