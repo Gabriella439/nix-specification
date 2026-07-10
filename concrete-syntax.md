@@ -34,7 +34,7 @@ argument =
   | formals "@" identifier
 
 formals =
-    "{" (("...")? | formal (", " formal)* ("," "...")?) "}"
+    "{" (("...")? | formal (", " formal)* ("," ("...")?)?) "}"
 
 formal = identifier ("?" expression)?
 
