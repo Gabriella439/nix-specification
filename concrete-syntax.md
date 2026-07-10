@@ -45,8 +45,8 @@ let-binding =
 inherit-binding = "inherit" ("(" expression ")")? identifier* ";"
 
 pipe_expression =
-    operator_expression ("|>" operator_expression)*
-  | (operator_expression "<|")* operator_expression
+    operator_expression ("|>" operator_expression)+
+  | (operator_expression "<|")+ operator_expression
   | operator_expression
 
 operator_expression =
