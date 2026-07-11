@@ -45,15 +45,14 @@ let-binding =
 inherit-binding = "inherit" ("(" expression ")")? (identifier | "or")* ";"
 
 pipe_expression =
-    operator_expression ("|>" operator_expression)+
-  | (operator_expression "<|")+ operator_expression
-  | operator_expression
+    binary_operator_expression ("|>" binary_operator_expression)+
+  | (binary_operator_expression "<|")+ binary_operator_expression
+  | binary_operator_expression
 
-operator_expression =
-    operator_expression "?" attribute_path
-  | unary_operator operator_expression
-  | operator_expression binary_operator operator_expression
-  | application_expression
+binary_operator_expression =
+    unary_operator_expression ("?" attribute_path | binary_operator unary_operator_expression)*
+
+unary_operator_expression = unary_operator* application_expression
 
 unary_operator = "!" | "-"
 
