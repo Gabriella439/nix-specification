@@ -42,7 +42,7 @@ let-binding =
     identifier ("." attribute)* "=" expression ";"
   | inherit-binding
 
-inherit-binding = "inherit" ("(" expression ")")? identifier* ";"
+inherit-binding = "inherit" ("(" expression ")")? (identifier | "or")* ";"
 
 pipe_expression =
     operator_expression ("|>" operator_expression)+
